@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="main.js"></script>
+	<title>Kaeru no Synth</title>
+	<link rel="icon" href="frog_piano.JPG">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<h1>Kaeru no Synth</h1>
+	<!-- cute vid (words are not correct but melody is): https://www.youtube.com/watch?v=J7luT3ymmlo -->
+	<div class="buttonContainer">
+			<button id="wave" name="0">Wave</button> <!-- onclick="showPanel(0)" -->
+			<button id="add" name="1">Add</button>
+			<button id="am" name="2">AM</button>
+			<button id="fm" name="3">FM</button>
+	</div>
+	<div class="selections">
+		<div id="waveformTitle">Waveform:</div>
+		<form name="waveformForm" id="waveform">
+			<input type="radio" name="waveform" value="sine" checked>Sine
+			<input type="radio" name="waveform" value="square">Square
+			<input type="radio" name="waveform" value="sawtooth">Sawtooth
+			<input type="radio" name="waveform" value="triangle">Triangle
+		</form>
+	</div>
+	<div class="selections">
+		<form name="NumOfPartials" id="NumOfPartials">
+			<label for="NumOfPartials">Add Partials to the Fundamental:</label>
+			<input type="Number" min="1" id="Partials" value="1" size="4">
+		</form>
+	</div>
+	<div class="selections">
+		<label for="lfo">LFO Mode: </label>		
+		<label class="switch">
+		  <input type="checkbox" id="lfo">
+		  <span class="slider round"></span>
+		</label>
+		<!-- <input type="checkbox" id="lfo" name="lfo"> -->
+	</div>
+	<div class="selections">
+		<button id="playButton">PLAY</button>
+		<div id="sliders">
+			<input type="range" min=1 max=1000 id="updateFreq"></input>
+			<input type="range" min=1 max=1000 id="updateIndex"></input>
+		</div>
+	</div>
+	<img src="frog_smile.PNG" name="froggy">
+	<div id="song">
+		<h3>Kaeru no Uta</h3>
+		<p>kaeru no uta ga</p>
+		<pre id="notes">z x c v  c x  z</pre>
+		<p>kikoete kuru yo</p>
+		<pre id="notes">c v b n b v  c</pre>
+		<p>kuwa kuwa kuwa kuwa</p>
+		<pre id="notes"> z    z    z    z</pre>
+		<p>kero kero kero kero kuwa kuwa kuwa</p>
+		<pre id="notes"> zz   xx   cc   vv   c    x    z</pre>
+	</div>
+</body>
+</html>

@@ -1,0 +1,187 @@
+body{
+	background-color: #DAF7A6;
+	font-family: "Courier New", Courier, monospace;
+	color: #375500;
+	font-weight: bold;
+}
+h1{
+	text-align: center;
+}
+h3{
+	margin: 0;
+	margin-bottom: 10px;
+	text-decoration: underline;
+	text-decoration-style: wavy;
+}
+p{
+	margin: 0;
+	padding: 0;
+}
+img{
+	padding: 15px;
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+	width: 150px;
+}
+.selections{
+	color: #DAF7A6;
+	background-color: #375500;
+	padding: 15px;
+	border: dashed;
+	border-width: 2.5px;
+	border-radius: 10px;
+	border-color: #DAF7A6;
+	margin: auto;
+    display: none;
+	width: 400px;
+}
+#waveformTitle{
+	margin-bottom: 15px;
+}
+#notes{
+	margin-top: 0; 
+	margin-bottom: 10px;
+	font-family: "Courier New", Courier, monospace;
+}
+.buttonContainer{
+	display: block;
+	margin: 10px;
+	width: max-content;
+	margin: auto;
+}
+#song{
+	color: #DAF7A6;
+	background-color: #375500;
+	padding: 15px;
+	border: dashed;
+	border-width: 2.5px;
+	border-radius: 10px;
+	border-color: #DAF7A6;
+	margin: auto;
+	display: block;
+	width: max-content;
+}
+button{
+	margin-bottom: 5px;
+	color: #DAF7A6;
+	font-weight: bold;
+	width: 75px;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	padding: 10px;
+	font-family: "Courier New", Courier, monospace;
+	background-color: #375500;
+	border-radius: 10px;
+	border-style: dashed;
+	border-color: #DAF7A6;
+	border-width: 2px;
+}
+button:hover{
+	border-radius: 10px;
+	background-color: #538002;
+	border-style: dashed;
+	border-width: 2px;
+}
+input[type=number]{
+    width: 30px;
+} 
+#playButton{
+	font-weight: bold;
+	background-color: #95D7FF;
+	color: #E86DD0;
+	border-color: #E86DD0;
+	border-style: dashed;
+	border-width: 2px;
+	border-radius: 25px;
+}
+#playButton:hover{
+	background-color: #DAF7A6;
+}
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance : none;
+  background : red;
+  height : 20px;
+  width : 20px;
+}
+
+input[type=range] {
+  -webkit-appearance: none;
+  background: transparent;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  margin-top: -15px;
+  background: url(flyguy.PNG);
+}
+
+input[type=range]:focus {
+  outline: none;
+  opacity: 1;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 2px;
+  cursor: pointer;
+  background: #6CB3E1;
+  /*background: #F9CCFF;*/
+  border-radius: 100px;
+}
+#sliders{
+	display: none;
+}
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 28px;
+}
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  background: url(flyguy.PNG);
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+input:checked + .slider {
+  background-color: #2196F3;
+}
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+.slider.round:before {
+  border-radius: 50%;
+}
