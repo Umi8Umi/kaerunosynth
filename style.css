@@ -24,44 +24,6 @@ img{
     margin-right: auto;
 	width: 150px;
 }
-.selections{
-	color: #DAF7A6;
-	background-color: #375500;
-	padding: 15px;
-	border: dashed;
-	border-width: 2.5px;
-	border-radius: 10px;
-	border-color: #DAF7A6;
-	margin: auto;
-    display: none;
-	width: 400px;
-}
-#waveformTitle{
-	margin-bottom: 15px;
-}
-#notes{
-	margin-top: 0; 
-	margin-bottom: 10px;
-	font-family: "Courier New", Courier, monospace;
-}
-.buttonContainer{
-	display: block;
-	margin: 10px;
-	width: max-content;
-	margin: auto;
-}
-#song{
-	color: #DAF7A6;
-	background-color: #375500;
-	padding: 15px;
-	border: dashed;
-	border-width: 2.5px;
-	border-radius: 10px;
-	border-color: #DAF7A6;
-	margin: auto;
-	display: block;
-	width: max-content;
-}
 button{
 	margin-bottom: 5px;
 	color: #DAF7A6;
@@ -84,9 +46,44 @@ button:hover{
 	border-style: dashed;
 	border-width: 2px;
 }
-input[type=number]{
-    width: 30px;
-} 
+.selections{
+	color: #DAF7A6;
+	background-color: #375500;
+	padding: 15px;
+	border: dashed;
+	border-width: 2.5px;
+	border-radius: 10px;
+	border-color: #DAF7A6;
+	margin: auto;
+    display: none;
+	width: 400px;
+}
+.buttonContainer{
+	display: block;
+	margin: 10px;
+	width: max-content;
+	margin: auto;
+}
+#waveformTitle{
+	margin-bottom: 15px;
+}
+#notes{
+	margin-top: 0; 
+	margin-bottom: 10px;
+	font-family: "Courier New", Courier, monospace;
+}
+#song{
+	color: #DAF7A6;
+	background-color: #375500;
+	padding: 15px;
+	border: dashed;
+	border-width: 2.5px;
+	border-radius: 10px;
+	border-color: #DAF7A6;
+	margin: auto;
+	display: block;
+	width: max-content;
+}
 #playButton{
 	font-weight: bold;
 	background-color: #95D7FF;
@@ -98,6 +95,9 @@ input[type=number]{
 }
 #playButton:hover{
 	background-color: #DAF7A6;
+}
+input[type=number]{
+    width: 30px;
 }
 input[type=range]::-webkit-slider-thumb {
   -webkit-appearance : none;

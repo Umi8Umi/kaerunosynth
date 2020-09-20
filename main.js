@@ -32,10 +32,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 	var compressor = audioCtx.createDynamicsCompressor();
     compressor.threshold.setValueAtTime(-50, audioCtx.currentTime);
-
 	activeOscillators = {}
 	activeGainNodes = {}
 
+	//////////////////////////////
+	// Tab Panel
+	/////////////////////////////
 	var tabButtons = document.querySelectorAll("button");
 	var tabPanels = document.querySelectorAll(".selections");
 	const wave = document.getElementById("wave");
@@ -43,7 +45,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	const am = document.getElementById("am");
 	const fm = document.getElementById("fm");
 	var selected = "0";
-
 	wave.addEventListener("click", function(){showPanel(wave.name)}, false);
 	add.addEventListener("click", function(){showPanel(add.name)}, false);
 	am.addEventListener("click", function(){showPanel(am.name)}, false);
@@ -60,8 +61,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	        	addSynth(key, document.getElementById("Partials").value);
 	      	else if(selected == "2")
 	      		amSynth(key);
-	      	else if(selected == "3")
+	      	else if(selected == "3"){
+	      		if(playButton.innerText === "PLAY")
+	      			window.document.froggy.src='frog_smile.PNG';
 	      		changeFMcar(key);
+	      	}
 	    }
 	}
 
@@ -106,7 +110,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		}
 	  }
 
+	//////////////////////////////
+	// Addative Synthesis
+	/////////////////////////////
 	function addSynth(key, partials){
+		//fundamental and global gain
 	  	const osc = audioCtx.createOscillator();
 		osc.frequency.setValueAtTime(keyboardFrequencyMap[key], audioCtx.currentTime);
 	    osc.type = "sine";
@@ -118,6 +126,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		activeOscillators[key] = [osc];
 		activeGainNodes[key] = [gainNode];
 		gainNode.gain.setTargetAtTime(.3, audioCtx.currentTime, 0.1);
+		//additional partials
 	  	for(var i = 0; i < partials; i++){
 		  	const osc1 = audioCtx.createOscillator();
 		    osc1.frequency.setValueAtTime(keyboardFrequencyMap[key]*i, audioCtx.currentTime);
@@ -133,12 +142,15 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		}
 	}
 
+	///////////////////////////////////
+	// Amplitude Modulation Synthesis
+	//////////////////////////////////
 	function amSynth(key){
 	  	var carrier = audioCtx.createOscillator();
 	    var modulatorFreq = audioCtx.createOscillator();
-	    if(document.getElementById("lfo").checked == true)
+	    if(document.getElementById("lfo").checked == true) //lfo mode
 	    	modulatorFreq.frequency.value = 1;
-	    else
+	    else //hardcoded am synthesis
 	    	modulatorFreq.frequency.value = 100;
 	    carrier.frequency.setValueAtTime(keyboardFrequencyMap[key], audioCtx.currentTime);
 
@@ -163,6 +175,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		activeGainNodes[key] = [globalGain, modulated, depth];
 	}
 
+	///////////////////////////////////
+	// Frequency Modulation Synthesis
+	//////////////////////////////////
 	var modulatorFreq;
 	var modulationIndex;
 	var carrier;
@@ -177,6 +192,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	    carrier = audioCtxFM.createOscillator();
 	    modulatorFreq = audioCtxFM.createOscillator();
 
+	    //global gain
 	    gainNode = audioCtxFM.createGain();
 	    gainNode.gain.setValueAtTime(0.01, audioCtxFM.currentTime);
 		gainNode.connect(compressorFM).connect(audioCtxFM.destination);	    
@@ -198,16 +214,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	    activeOscillatorsFM = {modulatorFreq, carrier};
 	}
 
-	function changeFMcar(val){
-		carrier.frequency.value = val;
-	}
-	function updateFreq(val) {
-	    modulatorFreq.frequency.value = Math.floor(val);
-	};
-	function updateIndex(val) {
-	    modulationIndex.gain.value = Math.floor(val);
-	};
-
+	//update basded on slider input and keypresses
+	function changeFMcar(val){ carrier.frequency.value = val; }
+	function updateFreq(val) { modulatorFreq.frequency.value = Math.floor(val); };
+	function updateIndex(val) { modulationIndex.gain.value = Math.floor(val); };
 	document.getElementById('updateFreq').addEventListener('change', function(){updateFreq(this.value)}, false);
 	document.getElementById('updateIndex').addEventListener('change', function(){updateIndex(this.value)}, false);
 	document.getElementById('updateFreq').addEventListener('input', function(){updateFreq(this.value)}, false);
@@ -241,6 +251,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 	}, false);
 
+	//////////////////////////////
+	// Tab Panel show function
+	/////////////////////////////
 	function showPanel(panelIndex){
 		selected = panelIndex;
 		tabButtons.forEach(function(tab){
