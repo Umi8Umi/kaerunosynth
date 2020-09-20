@@ -114,7 +114,7 @@ input[type=range] {
 input[type=range]::-webkit-slider-thumb {
   -webkit-appearance: none;
   margin-top: -15px;
-  background: url(flyguy.PNG);
+  background: url(flyguy.png);
 }
 
 input[type=range]:focus {
@@ -163,7 +163,7 @@ input[type=range]::-webkit-slider-runnable-track {
   left: 4px;
   bottom: 4px;
   background-color: white;
-  background: url(flyguy.PNG);
+  background: url(flyguy.png);
   -webkit-transition: .4s;
   transition: .4s;
 }
